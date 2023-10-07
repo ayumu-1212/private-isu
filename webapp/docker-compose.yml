@@ -31,6 +31,8 @@ services:
         limits:
           cpus: '1'
           memory: 1g
+    ports:
+      - "8080:80"
 
   mysql:
     image: mysql:8.0
@@ -52,6 +54,14 @@ services:
 
   memcached:
     image: memcached:1.6
+
+  bench:
+    build: bench/
+    container_name: bench
+    volumes:
+      - ./logs/nginx:/app/src/logs/nginx
+    working_dir: /app/src
+    tty: true
 
 volumes:
   mysql:
