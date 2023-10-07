@@ -18,5 +18,5 @@ portal/tmp
 .vagrant
 
 # logs
-/webapp/logs/nginx/*
+/webapp/logs/*/*
 !rotate.sh
