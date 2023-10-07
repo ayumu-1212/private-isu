@@ -19,3 +19,4 @@ portal/tmp
 
 # logs
 /webapp/logs/nginx/*
+!rotate.sh
