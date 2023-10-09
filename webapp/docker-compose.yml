@@ -35,7 +35,8 @@ services:
           memory: 1g
 
   mysql:
-    image: mysql:8.0
+    image: mysql:8.0-debian
+    platform: linux/amd64
     container_name: isu-mysql
     environment:
       #- "TZ=Asia/Tokyo"
