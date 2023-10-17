@@ -13,7 +13,7 @@ services:
 
   app:
     # Go実装の場合は golang/ PHP実装の場合は php/
-    build: golang/
+    build: ruby/
     container_name: isu-app
     environment:
       ISUCONP_DB_HOST: mysql
@@ -62,7 +62,8 @@ services:
     build: bench/
     container_name: isu-bench
     volumes:
-      - ./logs/nginx:/app/src/logs/nginx
+      - ./logs/nginx:/app/logs/nginx
+      - ./bench/src:/app/src
     working_dir: /app/src
     tty: true
 
