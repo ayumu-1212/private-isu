@@ -2,18 +2,20 @@ import http from 'k6/http';
 import { check } from 'k6';
 import { parseHTML } from 'k6/html';
 import { url } from './config.js';
+import { getAccount } from './account.js';
 
 export default function () {
+  const account = getAccount();
   const login_res = http.post(url('/login'), {
-    account_name: 'terra',
-    password: 'terraterra',
+    account_name: account.account_name,
+    password: account.password,
   })
 
   check(login_res, {
     'is status 200': (r) => r.status = 200,
   })
 
-  const res = http.get(url('/@terra'));
+  const res = http.get(url('/@' + account.account_name));
 
   const doc = parseHTML(res.body);
 
